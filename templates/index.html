@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
+    <title>Add your quotes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css') }}">
+</head>
+
+<body>
+
+    <div role="main" style="margin: 2rem 2rem;">
+        <div style="color:#fff; background-color:#dc0f46; padding: 3rem 1.5rem;border-radius: 2rem;">
+            <h1
+                style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 5rem; text-align: center;">
+                FAVQUOTES </h1>
+        </div>
+            <div style="margin: 1rem 2rem; display:block">
+                <a class="btn btn-dark" href="{{ url_for('quotes')}}">+ Add a quote</a>
+            </div>
+        <div style="padding: 0rem 2rem;">
+            <!-- for Loop starts -->
+            {% for r in result %}
+            <div style="margin: 1rem 0rem">
+                <div
+                    style="color:white;font-size:28px;background-color:black; margin: 0.5rem 0rem;border-radius: 1rem;padding:0.8rem 0.2rem 0.1rem 0.8rem;">
+                    <h1 style=" font-size:1.8rem; font-family:Georgia, 'Times New Roman', Times, serif;font-weight: 600;">
+                        {{r.author}} </h1>
+                </div>
+                <div
+                    style="color:rgb(32, 30, 30);border-style: solid;border-color: black;border-radius: 1rem;padding: 0.1rem 1rem;">
+                    <p  style="font-size:1.5rem; font-family:serif"> {{r.quote}} </p>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- for Loop ends here -->
+        </div>
+    </div> <!-- /container -->
+</body>
+
+</html>
