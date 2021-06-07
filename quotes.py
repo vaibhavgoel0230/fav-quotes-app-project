@@ -31,3 +31,27 @@ def process():
     db.session.commit()
     return redirect(url_for('index'))
 
+@app.route('/update/<int:id>',methods=['GET','POST'])
+def update(id):
+    favquote = Favquotes.query.get_or_404(id)
+    if request.method =='POST':
+        favquote.author = request.form.get('author')
+        favquote.quote = request.form.get('quote')
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return "There is a problem in updating your quote."
+    else:
+        return render_template('update.html',favquote=favquote)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    favquote = Favquotes.query.get_or_404(id)
+    try:
+        db.session.delete(favquote)
+        db.session.commit()
+        return redirect('/')
+    except:
+        return "There is a problem in deleting your quote."
+
