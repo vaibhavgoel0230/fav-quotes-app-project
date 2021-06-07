@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app=Flask(__name__)
 
-app.config['DATABASE_URL']='postgres://uvncskmwijuckw:5a91b5a34eeb640472cd0734c3778db9f655b1b90b71b3cbb34589e11e956d02@ec2-54-228-139-34.eu-west-1.compute.amazonaws.com:5432/dcsrg08r9m5qe'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///favquote.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 db= SQLAlchemy(app)
